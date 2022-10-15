@@ -3,7 +3,7 @@ const cors = require('cors')
 const connectDb = require('./app/config/database')
 const app = express()
 const bodyParser = require('body-parser')
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8080
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
@@ -36,6 +36,6 @@ app.use('/order', orderRouter)
 require('./app/routes/auth.routes')(app)
 require('./app/routes/user.routes')(app)
 
-app.listen(8080, () => {
-  console.log(`server running on 8080 !`)
+app.listen(PORT, () => {
+  console.log(`server running on ${PORT} !`)
 })
